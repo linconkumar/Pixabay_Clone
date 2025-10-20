@@ -1,42 +1,56 @@
+/* Navbar.css - Modern & Clean */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: static;
-  color: white;
-  padding: 15px 30px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px 40px;
+  background: linear-gradient(90deg, #ff758c, #0b0b0b);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.nav:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .nav h1 {
-  font-size: 1.6rem;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
   letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.nav .left{
-    padding-right: 50px;
+.nav h1:hover {
+  transform: scale(1.05);
 }
 
 .nav input {
-  padding: 10px 15px;
-  width: 250px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
   border: none;
   outline: none;
-  font-size: 15px;
+  font-size: 1rem;
+  width: 250px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav input::placeholder {
-  color: #777;
+  color: #888;
 }
 
-@media (max-width: 480px) {
-  .nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav .left input {
-    width: 90%;
-  }
+.nav input:focus {
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }

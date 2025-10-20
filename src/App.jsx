@@ -5,7 +5,7 @@ import ImageCard from "./ImageCard";
 import Modal from "./Modal";
 import "./App.css";
 
-const API_KEY = "51517617-91370c039dc13505ef574a9c1"; // Replace with your own api key
+const API_KEY = "52694510-aefe2961e486957ed1bc3c8d5"; 
 
 const App = () => {
   const [images, setImages] = useState([]);
@@ -16,7 +16,7 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [hasMore, setHasMore] = useState(true);
 
-  // Fetch images
+
   const fetchImages = async (query, newPage = 1) => {
     try {
       setLoading(true);
@@ -35,7 +35,6 @@ const App = () => {
         setHasMore(false);
       }
 
-      // Append or replace based on page
       setImages((prev) =>
         newPage === 1 ? newImages : [...prev, ...newImages]
       );
@@ -46,12 +45,10 @@ const App = () => {
     }
   };
 
-  // Load default images on mount
   useEffect(() => {
     fetchImages("nature", 1);
   }, []);
 
-  // Fetch on search
   useEffect(() => {
     if (search.trim() === "") {
       fetchImages("nature", 1);
@@ -62,7 +59,6 @@ const App = () => {
     setHasMore(true);
   }, [search]);
 
-  // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -81,7 +77,6 @@ const App = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [loading, hasMore, page, search]);
 
-  //  Download image
   const handleDownload = async (url, filename = "pixabay-image.jpg") => {
     try {
       const response = await fetch(url);
@@ -102,14 +97,12 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* Navbar */}
       <Navbar setSearch={setSearch} />
 
-      {/* Gallery Section */}
       <div className="image-gallery">
         {error && <p className="error">{error}</p>}
         {!loading && images.length === 0 && (
-          <p className="no-results">❌ No images found.</p>
+          <p className="no-results"> No images found.</p>
         )}
 
         {images.map((img) => (
@@ -121,10 +114,9 @@ const App = () => {
         ))}
       </div>
 
-      {loading && <p className="loading">⏳ Loading more images...</p>}
+      {loading && <p className="loading"> Loading more images...</p>}
       {!hasMore && <p className="end-msg">No more images available.</p>}
 
-      {/* Modal */}
       {selectedImage && (
         <Modal
           image={selectedImage}
